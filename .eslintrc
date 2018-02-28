@@ -1,4 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb-base"
+  "extends": [ 
+    "airbnb-base",
+    "prettier"
+  ],
+  "rules": {
+    "linebreak-style": ["error", "windows"]
+  }
 }

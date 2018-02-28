@@ -1,0 +1,8 @@
+{
+    "platforms": [
+        { "id": 1, "name": "generic", "directory": "common" },
+        { "id": 2, "name": "linux", "directory": "linux" },
+        { "id": 3, "name": "osx", "directory": "osx" },
+        { "id": 4, "name": "windows", "directory": "windows" }
+  ]
+}

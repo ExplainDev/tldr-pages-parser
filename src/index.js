@@ -1,26 +1,19 @@
-var marked = require('marked');
-var fs = require('fs');
-var path = require('path');
+const path = require("path");
+const config = require("config");
+const page = require("./page");
+const program = require("./program");
+const command = require("./command");
 
-const manPagesPath = path.join('vendor', 'tldr', 'pages', 'common');;
+const process = async () => {
+  const pagesPath = path.join("vendor", "tldr", "pages");
+  const platforms = config.get("platforms");
+  let pages = await page.findPages(pagesPath, platforms);
+  pages = await page.readPages(pages);
+  pages = page.parsePages(pages);
+  const programs = program.getPrograms(pages);
+  const commands = command.getCommands(pages);
+  console.log(programs);
+  console.log(commands);
+};
 
-const platforms = [
-  { id: 0, name: 'generic', directory: 'common' },
-  { id: 1, name: 'linux', directory: 'linux' },
-  { id: 2, name: 'osx', directory: 'osx' },
-  { id: 3, name: 'windows', directory: 'windows' }
-];
-
-platforms.
-fs.readdir(manPagesPath, (error, items) => {
-    fs.readFile(path.join(manPagesPath, 'ansible.md'), 'utf8', (error, data) => {
-      var tokens = marked.lexer(data);
-      tokens = tokens.filter((token, idx) => {
-        if (token.type === 'heading' || token.type === 'text' || token.type === 'paragraph')
-          return true;
-        else
-          return false;
-      })
-      console.log(tokens);
-    });
-});
+process();
