@@ -20,5 +20,6 @@ const getCommands = pages => {
 };
 
 module.exports = {
-  getCommands
+  getCommands,
+  buildCommand
 };
