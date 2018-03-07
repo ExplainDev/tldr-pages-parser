@@ -5,6 +5,10 @@
     "prettier"
   ],
   "rules": {
-    "linebreak-style": ["error", "unix"]
+    "linebreak-style": ["error", "unix"],
+    "no-console": "off"
+  },
+  "env": {
+    "jest": true
   }
 }
