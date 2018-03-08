@@ -5,7 +5,8 @@ const _ = require("underscore");
 
 const findPages = (pagesPath, platforms) => {
   const promises = [];
-  console.log(pagesPath, platforms);
+  console.log(`Finding pages in ${platforms.length} platforms...`);
+  console.time("findPages");
   platforms.forEach(platform => {
     const p = new Promise((resolve, reject) => {
       fs.readdir(path.join(pagesPath, platform.directory), (err, files) => {
@@ -22,23 +23,22 @@ const findPages = (pagesPath, platforms) => {
     promises.push(p);
   });
   return Promise.all(promises)
-    .then(
-      platformPages =>
-        _.flatten(platformPages).map((platformPage, idx) => ({
-          ...platformPage,
-          id: idx + 1
-        })),
-      error => {
-        console.error(error);
-      }
-    )
-    .catch(() => {
-      console.log("Error");
+    .then(platformPages => {
+      console.timeEnd("findPages");
+      return _.flatten(platformPages).map((platformPage, idx) => ({
+        ...platformPage,
+        id: idx + 1
+      }));
+    })
+    .catch(err => {
+      console.log("There was an error while trying to find pages", err);
     });
 };
 
 const readPages = async pages => {
   const promises = [];
+  console.log(`Reading ${pages.length} pages`);
+  console.time("readPages");
   pages.forEach(page => {
     const p = new Promise((resolve, reject) => {
       fs.readFile(path.join(page.path, page.file), "utf8", (err, data) => {
@@ -49,19 +49,19 @@ const readPages = async pages => {
     promises.push(p);
   });
   return Promise.all(promises)
-    .then(
-      readFiles => readFiles,
-      error => {
-        console.error(error);
-      }
-    )
-    .catch(() => {
-      console.error("error");
+    .then(readFiles => {
+      console.timeEnd("readPages");
+      return readFiles;
+    })
+    .catch(err => {
+      console.error("There was an error while trying to read pages", err);
     });
 };
 
-const parsePages = pages =>
-  pages.map(page => {
+const parsePages = pages => {
+  console.log("Parsing pages");
+  console.time("parsePages");
+  const parsedPages = pages.map(page => {
     const lexer = new marked.Lexer();
     let tokens = lexer.lex(page.contents);
     tokens = tokens.filter(
@@ -75,6 +75,9 @@ const parsePages = pages =>
       tokens
     };
   });
+  console.timeEnd("parsePages");
+  return parsedPages;
+};
 
 module.exports = {
   readPages,
