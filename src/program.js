@@ -1,7 +1,9 @@
 const _ = require("underscore");
 
-const getPrograms = pages =>
-  pages.map(page => {
+const getPrograms = pages => {
+  console.log("Building programs object");
+  console.time("getPrograms");
+  const programs = pages.map(page => {
     const { id, name, platformId, tokens } = page;
     // refactor this zone below
     const cliName = _.chain(tokens)
@@ -20,6 +22,9 @@ const getPrograms = pages =>
       shortDecription
     };
   });
+  console.timeEnd("getPrograms");
+  return programs;
+};
 
 module.exports = {
   getPrograms
