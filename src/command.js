@@ -1,8 +1,8 @@
-const buildCommand = (id, programId, title, rawCommand) => ({
+const buildCommand = (id, programId, title, rawContent) => ({
   id,
   programId,
   title,
-  rawCommand
+  rawContent
 });
 
 const getCommands = pages => {
@@ -13,9 +13,12 @@ const getCommands = pages => {
   pages.forEach(page => {
     for (let i = 2; i < page.tokens.length; i += 2) {
       id += 1;
-      commands.push(
-        buildCommand(id, page.id, page.tokens[i].text, page.tokens[i + 1].text)
-      );
+      const [programId, title, rawContent] = [
+        page.id,
+        page.tokens[i].text,
+        page.tokens[i + 1].text.slice(1, -2)
+      ];
+      commands.push(buildCommand(id, programId, title, rawContent));
     }
   });
   console.timeEnd("getCommands");
