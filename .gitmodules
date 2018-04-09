@@ -1,3 +1,0 @@
-[submodule "tldr"]
-	path = tldr
-	url = git@github.com:tldr-pages/tldr.git
