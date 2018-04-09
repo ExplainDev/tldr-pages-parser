@@ -10,7 +10,7 @@ const getPrograms = pages => {
       .find({ type: "heading" })
       .pick("text")
       .value().text;
-    const shortDecription = _.chain(tokens)
+    const shortDescription = _.chain(tokens)
       .find({ type: "paragraph" })
       .pick("text")
       .value().text;
@@ -19,7 +19,7 @@ const getPrograms = pages => {
       cliName,
       name,
       platformId,
-      shortDecription
+      shortDescription
     };
   });
   console.timeEnd("getPrograms");
