@@ -15,7 +15,7 @@ const getCommands = pages => {
       id += 1;
       const [programId, title, rawContent] = [
         page.id,
-        page.tokens[i].text,
+        page.tokens[i].text.slice(0, -1),
         page.tokens[i + 1].text.slice(1, -1)
       ];
       commands.push(buildCommand(id, programId, title, rawContent));
