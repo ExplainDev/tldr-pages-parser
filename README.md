@@ -22,7 +22,25 @@ $ git submodule update
 ## Usage
 From the CLI
 
-`$ node src/index.js`
+```
+$ npm start
+
+Finding pages in 4 platforms...
+findPages: 2.119ms
+Reading 949 pages
+readPages: 28.282ms
+Parsing pages
+parsePages: 29.468ms
+Building programs object
+getPrograms: 8.956ms
+Building commands object
+getCommands: 2.682ms
+Writing file programs.json
+programs.json: 2.329ms
+Writing file commands.json
+commands.json: 10.732ms
+Total execution time: 88.026ms
+```
 
 The programs creates two files:
 * programs.js
