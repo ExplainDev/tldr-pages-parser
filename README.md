@@ -46,6 +46,23 @@ The programs creates two files:
 * programs.js
 * commands.js
 
+### Data Dictionary
+
+#### Platforms:
+View file config/default.json
+
+#### programs.json
+- id: sequencial ID
+- cliName: the CLI program name (the identifier used on you CLI to call this program)
+- platformId: The ID of the platform this program belongs to
+- shortDescription: A short description of the program
+
+#### commands.json
+- id: sequencial ID
+- programId: the ID of the program the command belongs to.
+- title: brief description of command
+- rawContent: the actual command
+
 ## Contributing
 Please submit an issue explaining the kind of request (help, bug reports, feature). PRs are very welcome ;)
 
