@@ -54,6 +54,7 @@ View file config/default.json
 #### programs.json
 - id: sequencial ID
 - cliName: the CLI program name (the identifier used on you CLI to call this program)
+- name: humanized name
 - platformId: The ID of the platform this program belongs to
 - shortDescription: A short description of the program
 
