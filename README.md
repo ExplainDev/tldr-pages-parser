@@ -1,6 +1,6 @@
 # tldr pages parser
 
-A custom set of scripts that read, parse and extract [tldr pages](https://github.com/tldr-pages/tldr) and creates JS objects useful to initialize and populate a database with Sequelize seeders.
+A custom set of scripts that read, parse and extract [tldr pages](https://github.com/tldr-pages/tldr) and creates two JSON files containing programs and commands.
 
 ## Installation
 ### Clone this project
@@ -14,7 +14,7 @@ $ git submodule update
 ```
 
 ### Install npm packages
-`$ npm install --save`
+`$ npm install`
 
 ## Running the tests
 `$ npm test`
@@ -45,6 +45,8 @@ Total execution time: 88.026ms
 The programs creates two files:
 * programs.js
 * commands.js
+
+View the sample files programs.example.json and commands.example.json
 
 ### Data Dictionary
 
