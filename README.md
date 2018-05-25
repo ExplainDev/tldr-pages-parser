@@ -51,7 +51,12 @@ View the sample files programs.example.json and commands.example.json
 ### Data Dictionary
 
 #### Platforms:
-View file config/default.json
+```json
+{ "id": 1, "name": "generic", "directory": "common" },
+{ "id": 2, "name": "linux", "directory": "linux" },
+{ "id": 3, "name": "osx", "directory": "osx" },
+{ "id": 4, "name": "windows", "directory": "windows" }
+```
 
 #### programs.json
 - id: sequencial ID
