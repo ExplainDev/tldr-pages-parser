@@ -22,7 +22,7 @@ const getCommands = pages => {
     }
   });
   console.timeEnd("getCommands");
-  return commands;
+  return { commands };
 };
 
 module.exports = {

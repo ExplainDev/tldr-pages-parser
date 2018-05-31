@@ -23,7 +23,7 @@ const getPrograms = pages => {
     };
   });
   console.timeEnd("getPrograms");
-  return programs;
+  return { programs };
 };
 
 module.exports = {
